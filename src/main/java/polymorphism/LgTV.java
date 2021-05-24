@@ -11,13 +11,13 @@ public class LgTV implements TV{
 	}
 
 	@Override
-	public void VolumeUp() {
+	public void volumeUp() {
 		// TODO Auto-generated method stub
 		System.out.println("LgTV---소리를 올린다.");
 	}
 
 	@Override
-	public void VolumeDown() {
+	public void volumeDown() {
 		// TODO Auto-generated method stub
 		System.out.println("LgTV---소리를 내린다.");
 	}

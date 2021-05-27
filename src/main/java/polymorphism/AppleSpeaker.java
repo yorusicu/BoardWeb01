@@ -1,9 +1,11 @@
 package polymorphism;
 
+import org.springframework.stereotype.Component;
+
+//@Component("apple")
 public class AppleSpeaker implements Speaker{
 	
 	public AppleSpeaker() {
-		// TODO Auto-generated constructor stub
 		System.out.println("===> AppleSpeaker 객체 생성");
 	}
 

@@ -14,6 +14,7 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDAO boardDAO;
 	
+	
 	public void insertBoard(BoardVO vo) {
 		boardDAO.insertBoard(vo);
 	}
@@ -26,7 +27,6 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.deleteBoard(vo);
 	}
 	
-	@Override
 	public BoardVO getBoard(BoardVO vo) {
 		return boardDAO.getBoard(vo);
 	}

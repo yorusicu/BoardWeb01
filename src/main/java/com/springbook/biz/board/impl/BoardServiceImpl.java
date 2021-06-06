@@ -14,8 +14,11 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDAO boardDAO;
 	
-	
 	public void insertBoard(BoardVO vo) {
+		// 일부러 IllegalArgumentException에러발생시키기 위한 코드
+//		if (vo.getSeq() == 0) {
+//			throw new IllegalArgumentException("0번 글은 등록할 수 없습니다.");
+//		}
 		boardDAO.insertBoard(vo);
 	}
 	

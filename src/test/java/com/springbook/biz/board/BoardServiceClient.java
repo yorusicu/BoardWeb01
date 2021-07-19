@@ -23,7 +23,7 @@ public class BoardServiceClient {
 		vo.setContent("임시 내용..............");
 		boardService.insertBoard(vo);
 //		vo.setSeq(2);
-//		boardService.deleteBoard(vo);
+//		boardService.deleteBoard(vo
 		
 		// 4. 글 목록 검색기능테스트
 		List<BoardVO> boardList = boardService.getBoardList(vo);

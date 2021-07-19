@@ -11,6 +11,8 @@
 	<!-- BOARD AnnotationInject -->
 	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
 	
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
 	<bean id="log" class="com.springbook.biz.common.LogAdvice"/>
 	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"/>
 	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"/>
@@ -19,7 +21,6 @@
 	<bean id="around" class="com.springbook.biz.common.AroundAdvice"/>
 	
 	<aop:config>
-	
 		<aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*Impl.*(..))" />
 		<aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.get*(..))" />
 		

@@ -9,97 +9,17 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 		
 	<!-- BOARD AnnotationInject -->
-	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
+	<context:component-scan base-package="com.springbook.biz"/>
 	
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<aop:aspectj-autoproxy/>
 	
-	<bean id="log" class="com.springbook.biz.common.LogAdvice"/>
-	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"/>
-	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"/>
-	<bean id="afterThrowing" class="com.springbook.biz.common.AfterThrowingAdvice"/>
-	<bean id="after" class="com.springbook.biz.common.AfterAdvice"/>
-	<bean id="around" class="com.springbook.biz.common.AroundAdvice"/>
+	<!-- DataSource 설정 -->
+	<context:property-placeholder location="classpath:config/database.properties"/>
 	
-	<aop:config>
-		<aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*Impl.*(..))" />
-		<aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.get*(..))" />
-		
-		<!-- allPointcut -->
-		<aop:aspect ref="before">
-			<aop:before pointcut-ref="allPointcut" method="beforeLog"/>
-		</aop:aspect>
-		
-		<aop:aspect ref="afterThrowing">
-			<aop:after-throwing pointcut-ref="allPointcut" method="exceptionLog" throwing="exceptObj"/>
-		</aop:aspect>
-		
-		<aop:aspect ref="after">
-			<aop:after pointcut-ref="allPointcut" method="finallyLog"/>
-		</aop:aspect>
-		
-		<aop:aspect ref="around">
-			<aop:around pointcut-ref="allPointcut" method="aroundLog"/>
-		</aop:aspect>
-		
-		<!-- getPointcut -->
-		<aop:aspect ref="log">
-			<aop:after pointcut-ref="getPointcut" method="printLog"/>
-		</aop:aspect>
-		
-		<aop:aspect ref="afterReturning">
-			<aop:after-returning pointcut-ref="getPointcut" method="afterLog" returning="returnObj"/>
-		</aop:aspect>
-		
-	</aop:config>
-	
-	<!-- USER SetterInjection -->
-	<!-- <bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl">
-		<property name="userDAO" ref="userDAO"/>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>
-	
-	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO"></bean> -->
-	
-	<!-- USER AnnotationInjection -->	
-	
-	<!-- <bean id="tv" class="polymorphism.LgTV"></bean> -->
-	<!-- <bean class="polymorphism.SonySpeaker"></bean> -->
-	<!-- <bean class="polymorphism.AppleSpeaker"></bean> -->
-	<!-- <bean id="tv" class="polymorphism.SamsungTV" p:speaker-ref="sony" p:price="2700000">
-		<constructor-arg index="0" ref="apple"></constructor-arg>
-		<constructor-arg index="1" value="2700000"></constructor-arg>
-		<property name="speaker" ref="apple"></property>
-		<property name="price" value="2700000"></property>
-	</bean> -->
-	
-	<!-- <bean id="sony" class="polymorphism.SonySpeaker"></bean> -->
-	<!-- <bean id="apple" class="polymorphism.AppleSpeaker"></bean> -->
-	
-	<!-- <bean id="collectionBean" class="com.springbook.ioc.injection.CollectionBean">
-	
-		<property name="addressList">
-			<list>
-				<value>서울시 강남구 역삼동</value>
-				<value>서울시 강남구 행당동</value>
-			</list>
-			<set value-type="java.lang.String">
-				<value>서울시 강남구 역삼동</value>
-				<value>서울시 성동구 성수동</value>
-				<value>서울시 서초구 사당동</value>
-			</set>
-			<map>
-				<entry>
-					<key><value>고길동</value></key>
-					<value>서울시 강남구 역삼동</value>
-				</entry>
-				<entry>
-					<key><value>마이콜</value></key>
-					<value>서울시 강서구 화곡동</value>
-				</entry>
-			</map>
-			<props>
-				<prop key="고길동">서울시 강남구 역삼동</prop>
-				<prop key="마이콜">서울시 강서구 화곡동</prop>
-			</props>
-		</property>
-	</bean> -->
 </beans>

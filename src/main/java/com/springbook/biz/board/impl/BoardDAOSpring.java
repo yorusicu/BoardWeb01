@@ -71,4 +71,5 @@ class BoardRowMapperT implements RowMapper<BoardVO>{
 		board.setCnt(rs.getInt("CNT"));
 		return board;
 	}
+	// 깃허브 테스트
 }

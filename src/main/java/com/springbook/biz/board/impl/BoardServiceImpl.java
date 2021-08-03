@@ -12,7 +12,7 @@ import com.springbook.biz.board.BoardVO;
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
-	private BoardDAO boardDAO;
+	private BoardDAOSpring boardDAO;
 	
 	public void insertBoard(BoardVO vo) {
 		// 일부러 IllegalArgumentException에러발생시키기 위한 코드

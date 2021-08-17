@@ -10,10 +10,7 @@ import org.springframework.util.StopWatch;
 @Service
 @Aspect
 public class AroundAdvice {
-	@Pointcut("execution(* com.springbook.biz..*Impl.*(..))")
-	public void allPointcut() {}
-	
-	@Around("allPointcut()")
+	@Around("PointcutCommon.allPointcut()")
 	public Object aroundLog(ProceedingJoinPoint pjp) throws Throwable {
 		String method = pjp.getSignature().getName();
 

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 import org.springframework.stereotype.Repository;
 
-import com.springbook.biz.board.common.JDBCUtil;
+import com.springbook.biz.common.JDBCUtil;
 import com.springbook.biz.user.UserService;
 import com.springbook.biz.user.UserVO;
 
